@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +15,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/register', "RegisterController@form")->name('register.form');
+
+
