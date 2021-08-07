@@ -2,7 +2,7 @@
 @section('title', 'ログイン')
 @section('content')
 
-<form method="post" action="" class="block-b">
+<form method="post" action="{{route('login.try')}}" class="block-b">
 	@csrf
 <h1>ログイン</h1>
 <div class="element_wrap">
@@ -19,7 +19,7 @@
 <div class="element_wrap">
     <label for="password">パスワード</label>
     <div class="content-wrap">
-            <input id="password" type="password" class=" @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}">
+            <input id="password" type="password" class=" @error('password') is-invalid @enderror" name="password">
             @error('password')
             <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

@@ -19,9 +19,8 @@ Route::get('/', function () {
     return view('top');
 });
 
-Route::get('/login', function () {
-    return view('login.login');
-});
+Route::post('/login', "LoginController@try")
+->name('login.try');
 
 
 
