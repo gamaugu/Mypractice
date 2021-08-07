@@ -18,4 +18,6 @@ Route::get('/', function () {
 
 Route::get('/register', "RegisterController@form")->name('register.form');
 
+Route::post('/register/confirm', "RegisterController@confirm")->name('register.confirm');
+
 
