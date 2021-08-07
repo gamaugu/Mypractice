@@ -5,7 +5,7 @@
 
   <div class="element_wrap_str">
     <label>氏名</label>
-    <p>{{ $input["name_sei"] }}{{ $input["name_mei"] }}</p>
+    <p>{{ $input["name_mei"] }}</p>
   </div>
   <div class="element_wrap_str">
     <label>ニックネーム</label>

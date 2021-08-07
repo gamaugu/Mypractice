@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <form method="post" action="{{route('register.confirm')}}" class="block-b">
+    <form method="post" action="{{route('register.validation')}}" class="block-b">
         @csrf
     <h1>会員登録画面</h1>
     <div class="element_wrap">

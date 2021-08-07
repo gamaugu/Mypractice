@@ -13,10 +13,10 @@ class RegisterController extends Controller
         return view('register.register');
     }
 
-    // フォーム送信用（確認画面へ）
-    public function confirm(Request $request)
+    // ここでバリデーション
+    public function validation(Request $request)
     {
-        // ここでバリデーション
+        $input = $request->only($this->formItems);
         $validatedData = $request->validate([
             'name_sei' =>'required|max:20|string',
             'name_mei' =>'required|max:20|string',
@@ -26,8 +26,16 @@ class RegisterController extends Controller
             "password_confirmation" => "required|string|min:8|max:20",
             "email" => "required|unique:members|string|max:200|email",
         ]);
+        $input = $request->only($this->formItems);
 
-
-        return view('register.register');
+        return redirect()
+        ->route('register.confirm');
     }
+
+        // 確認画面表示
+        public function confirm(Request $request)
+        {
+            $input = $request->session()->get("form_input");
+            return view('register.confirm',["input" => $input]);
+        }
 }
