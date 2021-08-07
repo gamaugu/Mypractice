@@ -3,10 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
 use App\Models\Member;
 
 class RegisterController extends Controller
 {
+    private $formItems = ['name_sei','name_mei','nickname','gender','password','password_confirmation','email'];
+
+	private $validator = [
+        'name_sei' =>'required|max:20|string',
+        'name_mei' =>'required|max:20|string',
+        'nickname' =>'required|max:10|string',
+        "gender" => "required|integer|in:1,2",
+        "password" => "required|string|min:8|max:20|confirmed",
+        "password_confirmation" => "required|string|min:8|max:20",
+        "email" => "required|unique:members|string|max:200|email",
+	];
+
     // フォーム表示用
     public function form()
     {
@@ -16,35 +29,58 @@ class RegisterController extends Controller
     // ここでバリデーション
     public function validation(Request $request)
     {
-        $request->validate([
-            'name_sei' =>'required|max:20|string',
-            'name_mei' =>'required|max:20|string',
-            'nickname' =>'required|max:10|string',
-            "gender" => "required|integer|in:1,2",
-            "password" => "required|string|min:8|max:20|confirmed",
-            "password_confirmation" => "required|string|min:8|max:20",
-            "email" => "required|unique:members|string|max:200|email",
-        ]);
-        $request->session()->put('name_sei', $request->input('name_sei'));
-        $request->session()->put('name_mei', $request->input('name_mei'));
-        $request->session()->put('nickname', $request->input('nickname'));
-        $request->session()->put('gender', $request->input('gender'));
-        $request->session()->put('email', $request->input('email'));
+        $input = $request->only($this->formItems);
+        $validator = Validator::make($input, $this->validator);
+		if($validator->fails()){
+			return redirect()->action("RegisterController@form")
+				->withInput()
+				->withErrors($validator);
+		}
 
-        return redirect()
-        ->route('register.confirm');
+        //セッションに書き込む
+		$request->session()->put("form_input", $input);
+
+		return redirect()->action("RegisterController@confirm");
+
     }
 
         // 確認画面表示
-        public function confirm()
+        public function confirm(Request $request)
         {
-            return view('register.confirm');
+        //セッションから値を取り出す
+		$input = $request->session()->get("form_input");
+
+		//セッションに値が無い時はフォームに戻る
+		if(!$input){
+			return redirect()->action("RegisterController@form");
+		}
+		return view("register.confirm",["input" => $input]);
         }
 
+        public function send(Request $request){
+  		//セッションから値を取り出す
+        $input = $request->session()->get("form_input");
 
+        //戻るボタンが押された時
+		if($request->has("back")){
+		return redirect()->action("RegisterController@form")
+		->withInput($input);
+		}
 
+          //セッションに値が無い時はフォームに戻る
+        if(!$input){
+        return redirect()->action("RegisterController@form");
+        }
+
+          //ここでメールを送信するなどを行う
+
+          //セッションを空にする
+        $request->session()->forget("form_input");
+
+        return redirect()->action("RegisterController@complete");
+        }
 
         function complete(){
-            return view('register.complete');
+            return view("register.complete");
         }
 }
