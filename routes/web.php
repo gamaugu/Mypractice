@@ -12,8 +12,15 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', function () {
-    return view('welcome');
+    return view('top');
+});
+
+Route::get('/login', function () {
+    return view('login.login');
 });
 
 
