@@ -5,13 +5,13 @@
 
     <form method="post" action="{{route('register.confirm')}}" class="block-b">
         @csrf
-      <h1>会員登録画面</h1>
+    <h1>会員登録画面</h1>
     <div class="element_wrap">
         <label>氏名</label>
         <label class="name-label" for="name_sei">姓</label>
         <div class="content_wrap">
 
-            <input id="name_sei" type="text" class=" @error('name_sei') is-invalid @enderror" name="name_sei" value="{{ old('name_sei') }}"  autocomplete="family-name" autofocus>
+            <input id="name_sei" type="text" class=" @error('name_sei') is-invalid @enderror" name="name_sei" value="{{ old('name_sei') }}" >
 
             @error('name_sei')
             <span class="invalid-feedback" role="alert">
@@ -24,7 +24,7 @@
         <label class="name-label" for="name_mei">名</label>
         <div class="content-wrap">
 
-            <input id="name_mei" type="text" class=" @error('name_mei') is-invalid @enderror" name="name_mei" value="{{ old('name_mei') }}" autocomplete="given-name" autofocus>
+            <input id="name_mei" type="text" class=" @error('name_mei') is-invalid @enderror" name="name_mei" value="{{ old('name_mei') }}">
             @error('name_mei')
             <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -36,7 +36,7 @@
     <div class="element_wrap">
         <label for="nickname">ニックネーム</label>
         <div class="content-wrap">
-                <input id="nickname" type="text" class=" @error('nickname') is-invalid @enderror" name="nickname" value="{{ old('nickname') }}" required autocomplete="nickname" autocomplete="given-name" autofocus>
+                <input id="nickname" type="text" class=" @error('nickname') is-invalid @enderror" name="nickname" value="{{ old('nickname') }}" >
                 @error('nickname')
                 <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -44,6 +44,7 @@
         @enderror
         </div>
     </div>
+
     <div class="element_wrap">
         <label for="gender">性別</label>
         <div class="content-wrap">
@@ -51,7 +52,7 @@
                         @foreach(config('master.gender') as $index => $value)
                         <label>
                                 <input value='{{ $index }}'
-                                type="radio"  class="@error('gender')is-invalid @enderror" name="gender" @if(old('gender') == $index) checked @endif autofocus required>
+                                type="radio"  class="@error('gender')is-invalid @enderror" name="gender" @if(old('gender') == $index) checked @endif >
                                 @if($index == "1") 男性 @else 女性 @endif
                         </label>
                         @endforeach
@@ -66,7 +67,7 @@
     <div class="element_wrap">
         <label for="password">パスワード</label>
         <div class="content-wrap">
-                <input id="password" type="password" class=" @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                <input id="password" type="password" class=" @error('password') is-invalid @enderror" name="password">
                 @error('password')
                 <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -77,13 +78,13 @@
     <div class="element_wrap">
         <label for="password_confirmation">パスワード確認</label>
         <div class="content-wrap">
-                <input id="password-confirm" type="password" class="" name="password_confirmation" required autocomplete="new-password">
+                <input id="password-confirm" type="password" class="" name="password_confirmation">
         </div>
     </div>
     <div class="element_wrap">
         <label for="email">メールアドレス</label>
         <div class="content-wrap">
-                <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
                 @error('email')
                 <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
