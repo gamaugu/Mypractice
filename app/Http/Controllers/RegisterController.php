@@ -67,12 +67,21 @@ class RegisterController extends Controller
 		->withInput($input);
 		}
 
-          //セッションに値が無い時はフォームに戻る
+        //セッションに値が無い時はフォームに戻る
         if(!$input){
         return redirect()->action("RegisterController@form");
         }
 
-          //ここでメールを送信するなどを行う
+        //ここでメールを送信、DBへの登録するなどを行う
+        $member = new Member();
+        $member->name_sei = $request->name_sei;
+        $member->name_mei = $request->name_mei;
+        $member->nickname = $request->nickname;
+        $member->password = $request->password;
+        $member->email = $request->email;
+
+        $member->save();
+
 
           //セッションを空にする
         $request->session()->forget("form_input");
