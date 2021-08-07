@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\Member;
+// メールを追加
+use App\Mail\CompleteMail;
+use Illuminate\Support\Facades\Mail;
+
 
 class RegisterController extends Controller
 {
@@ -73,6 +77,8 @@ class RegisterController extends Controller
         }
 
         //ここでメールを送信、DBへの登録するなどを行う
+        Mail::to($input["email"])->send(new CompleteMail($input["name_sei"]));
+
         $member = new Member();
         $member->name_sei = $input["name_sei"];
         $member->name_mei = $input["name_mei"];
