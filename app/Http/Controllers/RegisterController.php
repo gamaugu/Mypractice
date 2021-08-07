@@ -26,8 +26,10 @@ class RegisterController extends Controller
             "email" => "required|unique:members|string|max:200|email",
         ]);
         $request->session()->put('name_sei', $request->input('name_sei'));
-        $request->session()->flash('message', 'セッションにデータを保存しました！');
-
+        $request->session()->put('name_mei', $request->input('name_mei'));
+        $request->session()->put('nickname', $request->input('nickname'));
+        $request->session()->put('gender', $request->input('gender'));
+        $request->session()->put('email', $request->input('email'));
 
         return redirect()
         ->route('register.confirm');
@@ -36,7 +38,6 @@ class RegisterController extends Controller
         // 確認画面表示
         public function confirm()
         {
-
             return view('register.confirm');
         }
 }
