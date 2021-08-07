@@ -2,9 +2,9 @@
 @section('title', '会員登録完了')
 @section('content')
 
-<div  class="block-b">
+<div  class="temp_board">
     <h1>会員登録完了</h1>
-
+<p>会員登録が完了しました。</p>
     {{-- <div class="btn-wrap">
 
         <input class="btn" type="submit" value="確認画面へ" />

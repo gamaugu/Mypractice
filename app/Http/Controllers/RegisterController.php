@@ -78,7 +78,7 @@ class RegisterController extends Controller
         $member->name_mei = $input["name_mei"];
         $member->nickname = $input["nickname"];
         $member->gender = $input["gender"];
-        $member->password = $input["password"];
+        $member->password = bcrypt($input["password"]);
         $member->email = $input["email"];
 
         $member->save();
