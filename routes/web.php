@@ -16,10 +16,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', "RegisterController@form")->name('register.form');
 
+
+
+
+
+Route::get('/register', "RegisterController@form")->name('register.form');
 Route::post('/register', "RegisterController@validation")->name('register.validation');
 
+
 Route::get('/register/confirm', "RegisterController@confirm")->name('register.confirm');
+Route::post('/register/confirm', "RegisterController@send")->name('register.send');
+
+Route::get('/register/complete', "RegisterController@complete")->name('register.complete');
 
 

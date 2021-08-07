@@ -40,4 +40,11 @@ class RegisterController extends Controller
         {
             return view('register.confirm');
         }
+
+
+
+
+        function complete(){
+            return view('register.complete');
+        }
 }
