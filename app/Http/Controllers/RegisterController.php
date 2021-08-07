@@ -74,11 +74,12 @@ class RegisterController extends Controller
 
         //ここでメールを送信、DBへの登録するなどを行う
         $member = new Member();
-        $member->name_sei = $request->name_sei;
-        $member->name_mei = $request->name_mei;
-        $member->nickname = $request->nickname;
-        $member->password = $request->password;
-        $member->email = $request->email;
+        $member->name_sei = $input["name_sei"];
+        $member->name_mei = $input["name_mei"];
+        $member->nickname = $input["nickname"];
+        $member->gender = $input["gender"];
+        $member->password = $input["password"];
+        $member->email = $input["email"];
 
         $member->save();
 
