@@ -2,7 +2,7 @@
 @section('title', 'ログイン')
 @section('content')
 
-<form method="post" action="{{route('login.try')}}" class="block-b">
+<form method="post" action="{{route('login.auth')}}" class="block-b">
 	@csrf
 <h1>ログイン</h1>
 <div class="element_wrap">
@@ -27,6 +27,15 @@
             @enderror
     </div>
 </div>
+
+@if(count($errors) >0)
+<div class="alert alert-danger">
+@foreach($errors->all() as $error)
+<p>{{ $error }}</p>
+@endforeach
+
+</div>
+@endif
 <p class="forget"><a href="">パスワードを忘れた方はこちら</a></p>
 
 <div class="btn-wrap">

@@ -5,7 +5,7 @@
     <div class="header">
       <div class="simple-wrap">
         <a href="{{route('register.form')}}" class="btn-simple">新規会員登録</a>
-        <a href="{{url('/login')}}" class="btn-simple">ログイン</a>
+        <a href="{{route('login.form')}}" class="btn-simple">ログイン</a>
       </div>
     </div>
     <div class="man-body">

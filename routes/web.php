@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use Illuminate\Auth\Middleware\Authenticate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,9 +21,19 @@ Route::get('/', function () {
     return view('top');
 });
 
-Route::post('/login', "LoginController@try")
-->name('login.try');
+Route::get('/login', "LoginController@show")
+->name('login.form');
 
+Route::post('/login', "LoginController@authenticate")
+->name('login.auth');
+
+Route::get('/member', "LoginController@top")
+;
+
+Route::post('/member', "LoginController@logout")
+->name('logout');
+
+// コメント
 
 
 
