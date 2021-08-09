@@ -484,6 +484,19 @@ select {
           align-items: center;
 }
 
+.simple-wrap_sb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: inherit;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .btn-simple {
   border: solid 1px black;
   color: black;

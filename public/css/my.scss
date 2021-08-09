@@ -409,6 +409,13 @@ select {
   align-items: center;
 }
 
+.simple-wrap_sb {
+  display: flex;
+  justify-content: space-between;
+  height: inherit;
+  align-items: center;
+}
+
 .btn-simple {
   border: solid 1px black;
   color: black;
