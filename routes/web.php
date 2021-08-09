@@ -37,3 +37,7 @@ Route::post('/register/confirm', "RegisterController@send")->name('register.send
 Route::get('/register/complete', "RegisterController@complete")->name('register.complete');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
