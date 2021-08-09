@@ -38,6 +38,8 @@ Route::get('/register/complete', "RegisterController@complete")->name('register.
 
 
 
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
