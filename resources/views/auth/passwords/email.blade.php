@@ -16,7 +16,7 @@
                     <div class="element_wrap">
                         <label for=""> メールアドレス</label>
 
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                     </div>
 
                             {{-- <div class="col-md-6">
