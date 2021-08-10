@@ -2,6 +2,10 @@ html {
   font-size: 62.5%;
 }
 
+p {
+  font-size: 1.6rem;
+}
+
 @media screen and (max-width: 767px) {
   h1 {
     font-size: 1.3rem !important;
@@ -67,7 +71,7 @@ form h1 {
 .blue-board {
   padding: 0;
   border: 1px solid black;
-  width: 510px;
+  width: 520px;
 }
 
 @media screen and (max-width: 767px) {
@@ -313,6 +317,25 @@ select {
 .element_wrap_str .str_l {
   width: 120px;
   text-align: left;
+}
+
+.element_wrap_fill {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0px auto 15px;
+}
+
+.element_wrap_fill label {
+  margin-right: 15px;
+  font-size: 1.4rem;
+}
+
+.element_wrap_fill input[name=email] {
+  width: 74%;
 }
 
 .inner_element {
@@ -625,11 +648,13 @@ input[name="title"] {
   color: blue;
   font-size: 1.6rem;
   text-align: right;
+  display: block;
 }
 
 .forget_lead {
   font-size: 1.6rem;
   text-align: left;
+  margin-bottom: 50px;
 }
 
 .forget_lead_sent {

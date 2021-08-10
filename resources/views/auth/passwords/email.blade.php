@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'パスワード再設定フォーム')
 @section('content')
 
             <div class="blue-board">
@@ -13,7 +14,7 @@
                     <p class="forget_lead">パスワード再設定用のURLを記載したメールを送信します。<br>ご登録されたメールドレスを入力してください。</p>
                         @csrf
 
-                    <div class="element_wrap">
+                    <div class="element_wrap_fill">
                         <label for=""> メールアドレス</label>
 
                         <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -31,7 +32,7 @@
 
                                 <div class="btn-wrap">
                                     <button type="submit" class="btn" name="submit">送信する</button>
-                                    <a type="button" class="btn btn-back" href="regist.php?action=edit">トップに戻る</a>
+                                    <a type="button" class="btn btn-back" href="/">トップに戻る</a>
                                 </div>
 
                         {{-- <div class="form-group row mb-0">
